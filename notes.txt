@@ -1,0 +1,36 @@
+===== Prepare teaching money project T2-2023
+
+https://github.com/iamshaunjp/React-Firebase
+
+https://www.udemy.com/course/build-web-apps-with-react-firebase/learn/lecture/29068900#questions
+I:\Udemyreact\my-money>npm install
+
+react-scripts --openssl-legacy-provider start
+I:\Udemyreact\my-money>npm install react-router-dom@5.1
+
+I:\Udemyreact\my-money>npm install firebase@8.5
+
+I:\Udemyreact\my-money>npm install -g firebase-tools            //install firebase command line on the vscode
+
+I:\Udemyreact\my-money>firebase deploy --only firestore
+
+I:\Udemyreact\my-money>npm run build
+I:\Udemyreact\my-money>firebase deploy
+
+npm install -g json-server
+json-server --watch ./data/db.json
+
+npm install react-bootstrap-validation --save
+
+//===========================================================================================================
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /transactions/{document=**} {
+      allow read, write: if
+          request.time < timestamp.date(2023, 12, 26);
+    }
+  }
+}
+//============================================================================================================
+Version one show home, login and signup pages.  also rediract to every page controled by App.js
